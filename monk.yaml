@@ -1,0 +1,28 @@
+namespace: test_project
+
+fastapi-app:
+  defines: runnable
+  metadata:
+    name: fastapi-app
+    description: A FastAPI web application with a callback endpoint for logging JSON data.
+    icon: https://emojiapi.dev/api/v1/robot.svg
+  containers:
+    fastapi-app:
+      image: env-4363.registry.local/fastapi-app:main-0a85926
+      build: .
+      dockerfile: Dockerfile.fastapi-app
+  services:
+    fastapi-default:
+      description: Default port for FastAPI application
+      container: fastapi-app
+      port: 8000
+      host-port: 8000
+      publish: true
+      protocol: tcp
+  connections: {}
+  variables: {}
+
+stack:
+  defines: group
+  members:
+    - test_project/fastapi-app
