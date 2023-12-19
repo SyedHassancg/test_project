@@ -8,7 +8,7 @@ fastapi-app:
     icon: https://emojiapi.dev/api/v1/robot.svg
   containers:
     fastapi-app:
-      image: env-4363.registry.local/fastapi-app:main-0a85926
+      image: env-4363.registry.local/fastapi-app:monk-main-2312191300-d62fb60
       build: .
       dockerfile: Dockerfile.fastapi-app
   services:
@@ -20,7 +20,19 @@ fastapi-app:
       publish: true
       protocol: tcp
   connections: {}
-  variables: {}
+  variables:
+    pythondontwritebytecode:
+      env: PYTHONDONTWRITEBYTECODE
+      type: string
+      value: '1'
+      description: Prevent Python from writing .pyc files to disk
+    pythonunbuffered:
+      env: PYTHONUNBUFFERED
+      type: string
+      value: '1'
+      description: >-
+        Ensure that Python output is sent straight to terminal without being
+        buffered
 
 stack:
   defines: group
