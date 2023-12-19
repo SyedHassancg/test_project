@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from routes.callback import callback_router
+from callback import callback_router
 
 app = FastAPI()
 
